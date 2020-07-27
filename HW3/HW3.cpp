@@ -3,9 +3,13 @@
 
 #include "stdafx.h"
 
+#include <FreeImage.h>
+
 
 int main()
 {
+	FreeImage_Initialise();
+	FreeImage_DeInitialise();
     return 0;
 }
 
