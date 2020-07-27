@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 
+#include "readfile.h"
+
 
 
 void saveScreenshot(BYTE * pixels, int w, int h, std::string fname)
@@ -19,14 +21,14 @@ void saveScreenshot(BYTE * pixels, int w, int h, std::string fname)
 }
 
 
-int main()
+int main(int argc, char* argv[])
 {
+	std::string fname = readfile(argv[1]);
+
 	FreeImage_Initialise();
 	int w = 640, h = 480;
 	BYTE pixels[921600]; // 3 * w * h
-
-	saveScreenshot(pixels, w, h, "output.png");
-
+	saveScreenshot(pixels, w, h, fname);
 	FreeImage_DeInitialise();
     return 0;
 }
