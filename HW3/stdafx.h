@@ -10,6 +10,10 @@
 #include <stdio.h>
 #include <tchar.h>
 
-
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <FreeImage.h>
 
 // TODO: reference additional headers your program requires here

@@ -151,6 +151,7 @@
     <ClInclude Include="readfile.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="variables.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HW3.cpp" />

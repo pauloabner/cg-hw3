@@ -1,5 +1,4 @@
-#pragma once
-#include <iostream>
-#include <fstream>
+#include "stdafx.h"
 
-std::string readfile(const char * filename);
+using namespace std;
+string readfile(const char * filename);

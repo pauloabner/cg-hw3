@@ -1,12 +1,22 @@
 #include "stdafx.h"
+#include "variables.h"
 #include "readfile.h"
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
+using namespace std;
 
-std::string readfile(const char* filename)
+bool readvals(stringstream &s, const int numvals, float* values)
+{
+	for (int i = 0; i < numvals; i++) {
+		s >> values[i];
+		if (s.fail()) {
+			cout << "Failed reading value " << i << " will skip\n";
+			return false;
+		}
+	}
+	return true;
+}
+
+string readfile(const char* filename)
 {
 	std::string str, cmd, fname;
 	std::ifstream in;
@@ -18,14 +28,27 @@ std::string readfile(const char* filename)
 				std::stringstream s(str);
 				s >> cmd;
 
+				float values[10];
+				bool validinput;
+
 				if (cmd == "output") {
 					s >> fname;
 					if (s.fail()) {
 						std::cout << "Failed reading value filename";
 					}
+					else {
+						std::cout << "Outputfile: " << fname << "\n";
+					}
+				}
+				else if (cmd == "size") {
+					validinput = readvals(s, 2, values);
+					if (validinput) {
+						w = (int)values[0]; h = (int)values[1];
+						std::cout << "Size: " << values[0] << " x " << values[1] << "\n";
+					}
 				}
 				else {
-					std::cout << "Command not found: " << cmd;
+					std::cout << "Command not found: " << cmd << "\n";
 				}
 			}
 			getline(in, str);
